@@ -51,9 +51,8 @@ class TestCase(case.TestCase, AirDriver):
         self.case_time = int(time.time())
         self.log_dir = os.path.join(AIRLOG_DIR, f"{self.case_time}_log")
         if AirTest.air_app_info is not None:
-            self.poco = self.connect_device(self.log_dir)
+            AirTest.air_poco = self.connect_device(__file__, self.log_dir)
         self.start()
-        return self.poco
 
     def tearDown(self):
         log_dir = self.log_dir
